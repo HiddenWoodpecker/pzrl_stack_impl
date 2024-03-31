@@ -2,34 +2,66 @@
 #include "VectorStack.h"
 #include "LinkedListStack.h"
 
+
 Stack::Stack(StackContainer container){
 	_containerType = container;
+
 	if (container == StackContainer::Vector){
 		_pimpl = new VectorStack();
 	}
 	else if (container == StackContainer::List){
 		_pimpl = new LinkedListStack();
-
 	}
+
 }
 
 
-Stack::Stack(const Stack& copyStack) = default; 
-/*
-{
-    *this = copyStack;
+Stack::Stack(const Stack& copyStack){
+    StackContainer container = copyStack._containerType;
+
+    if(copyStack.size() == 0 || copyStack._pimpl == nullptr){
+        Stack(copyStack._containerType); 
+    }
+
+    else{
+	    ValueType * valueArray = copyStack._pimpl->getSequence();
+        int arraySize = copyStack.size();
+
+        if (container == StackContainer::Vector){
+		    _pimpl = new VectorStack(valueArray, arraySize);
+	    }
+	    else if (container == StackContainer::List){
+		    _pimpl = new LinkedListStack(valueArray, arraySize);
+	    }
+
+        delete valueArray;
+    }
 }
-*/
-Stack& Stack::operator=(const Stack& copyStack) = default;
-/*
-{
-	if (this != &copyStack){
-	    _containerType = copyStack._containerType;
-	    _pimpl = new copyStack._pimpl
-	}
+
+Stack& Stack::operator=(const Stack& copyStack){
+    StackContainer container = copyStack._containerType;
+
+    if (this != &copyStack){
+        if(copyStack.size() == 0 || copyStack._pimpl == nullptr){
+        Stack(copyStack._containerType);
+    }
+    else{
+	    ValueType * valueArray = copyStack._pimpl->getSequence();
+        int arraySize = copyStack.size();
+
+        if (container == StackContainer::Vector){
+		    _pimpl = new VectorStack(valueArray, arraySize);
+	    }
+	    else if (container == StackContainer::List){
+		    _pimpl = new LinkedListStack(valueArray, arraySize);
+	    }
+
+        delete valueArray;
+        }
+
+    }
     return *this;
-}
-*/
+} 
 
 Stack::Stack(Stack&& moveStack) noexcept = default;
 Stack& Stack::operator=(Stack&& moveStack) noexcept = default;
