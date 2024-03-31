@@ -15,6 +15,8 @@ public:
     virtual bool isEmpty() const = 0;
     // размер 
     virtual size_t size() const = 0;
+	// получить весь стек в виде массива
+	virtual ValueType* getSequence() const = 0;
     // виртуальный деструктор
     virtual ~IStackImplementation() = default;
 };
