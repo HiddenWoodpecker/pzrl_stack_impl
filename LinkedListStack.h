@@ -1,15 +1,15 @@
 #pragma once
 #include "StackImplementation.h"
-#include <vector>
+#include <list>
 using ValueType = double;
 
-class VectorStack : public IStackImplementation{
+class LinkedListStack : public IStackImplementation{
 	
 	public:
 
-	VectorStack();
-	VectorStack(const ValueType* valueArray, const size_t arraySize);
-	~VectorStack();
+	LinkedListStack();
+	LinkedListStack(const ValueType* valueArray, const size_t arraySize);
+	~LinkedListStack();
 
 	void push(const ValueType& value) override;
 	void pop() override;
@@ -17,6 +17,6 @@ class VectorStack : public IStackImplementation{
 	bool isEmpty() const override;
 	size_t size() const override;
 	
-	std::vector<ValueType>* vec = nullptr;
+	std::list<ValueType>* lst = nullptr;
 };
 

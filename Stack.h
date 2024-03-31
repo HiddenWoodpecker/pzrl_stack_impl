@@ -3,6 +3,7 @@
 // клиентский код подключает именно этот хедер
 
 // тип значений в стеке
+#include <stdlib.h>
 using ValueType = double;
 
 // на основе какого контейнера работает стек
@@ -18,7 +19,6 @@ class IStackImplementation;
 class Stack
 {
 public:
-    // Большая пятерка
     Stack(StackContainer container = StackContainer::Vector);
     // элементы массива последовательно подкладываются в стек
     Stack(const ValueType* valueArray, const size_t arraySize, 
