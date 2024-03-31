@@ -35,3 +35,12 @@ size_t LinkedListStack::size() const {
 	return lst->size();
 }
 
+ValueType* LinkedListStack::getSequence() const {
+    ValueType *arr = new ValueType[lst->size()];
+    int l = 0;
+    for (auto &a : *lst){
+        arr[l++] =a;
+    }
+    return arr;
+}
+

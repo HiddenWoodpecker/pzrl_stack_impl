@@ -16,7 +16,7 @@ class VectorStack : public IStackImplementation{
 	const ValueType& top() const override;
 	bool isEmpty() const override;
 	size_t size() const override;
-	
+    ValueType* getSequence() const override;	
 	std::vector<ValueType>* vec = nullptr;
 };
 

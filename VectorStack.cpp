@@ -1,4 +1,5 @@
 #include "VectorStack.h"
+#include <iostream>
 VectorStack::VectorStack(){
 	vec = new std::vector<ValueType>;
 }
@@ -34,3 +35,12 @@ size_t VectorStack::size() const {
 	return vec->size();
 }
 
+
+
+ValueType* VectorStack::getSequence() const {
+    ValueType *arr = new ValueType[vec->size()];
+    for (int i = 0; i< vec->size(); ++i){
+        arr[i] = vec->at(i);
+    }
+    return arr;
+}
