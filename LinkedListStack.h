@@ -9,7 +9,7 @@ class LinkedListStack : public IStackImplementation{
 
 	LinkedListStack();
 	LinkedListStack(const ValueType* valueArray, const size_t arraySize);
-	~LinkedListStack();
+	//~LinkedListStack() override;
 
 	void push(const ValueType& value) override;
 	void pop() override;
@@ -17,6 +17,6 @@ class LinkedListStack : public IStackImplementation{
 	bool isEmpty() const override;
 	size_t size() const override;
     ValueType* getSequence() const override;
-	std::list<ValueType>* lst = nullptr;
+	std::list<ValueType> lst = {};
 };
 

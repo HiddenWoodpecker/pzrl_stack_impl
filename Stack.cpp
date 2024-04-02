@@ -2,7 +2,6 @@
 #include "VectorStack.h"
 #include "LinkedListStack.h"
 
-
 Stack::Stack(StackContainer container){
 	_containerType = container;
 
@@ -10,7 +9,8 @@ Stack::Stack(StackContainer container){
 		_pimpl = new VectorStack();
 	}
 	else if (container == StackContainer::List){
-		_pimpl = new LinkedListStack();
+    	_pimpl = new LinkedListStack();
+
 	}
 
 }
@@ -63,10 +63,21 @@ Stack& Stack::operator=(const Stack& copyStack){
     return *this;
 } 
 
-Stack::Stack(Stack&& moveStack) noexcept = default;
-Stack& Stack::operator=(Stack&& moveStack) noexcept = default;
+Stack::Stack(Stack&& moveStack) noexcept {
+    _pimpl = moveStack._pimpl;
+    moveStack._pimpl = nullptr;
+}
+Stack& Stack::operator=(Stack&& moveStack) noexcept {
+    if (&moveStack != this){
+        _pimpl = moveStack._pimpl;
+         moveStack._pimpl = nullptr;
+    }
+    return *this;
+};
 
-Stack::~Stack() = default;
+Stack::~Stack() {
+    delete _pimpl;
+}
 
 
 

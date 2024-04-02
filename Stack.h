@@ -1,7 +1,6 @@
 #pragma once
 // Уровень абстракции
 // клиентский код подключает именно этот хедер
-
 // тип значений в стеке
 #include <stdlib.h>
 using ValueType = double;

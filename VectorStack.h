@@ -9,7 +9,7 @@ class VectorStack : public IStackImplementation{
 
 	VectorStack();
 	VectorStack(const ValueType* valueArray, const size_t arraySize);
-	~VectorStack();
+//	~VectorStack() override;
 
 	void push(const ValueType& value) override;
 	void pop() override;
@@ -17,6 +17,6 @@ class VectorStack : public IStackImplementation{
 	bool isEmpty() const override;
 	size_t size() const override;
     ValueType* getSequence() const override;	
-	std::vector<ValueType>* vec = nullptr;
+    std::vector<ValueType> vec = {};
 };
 

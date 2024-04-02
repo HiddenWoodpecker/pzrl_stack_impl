@@ -1,46 +1,42 @@
 #include "VectorStack.h"
 #include <iostream>
-VectorStack::VectorStack(){
-	vec = new std::vector<ValueType>;
-}
+
+
+VectorStack::VectorStack() = default;
 
 VectorStack::VectorStack(const ValueType* valueArray, const size_t arraySize){
-	vec = new std::vector<ValueType>;
 	for (int i = 0; i < arraySize; ++i){
-		vec->push_back(valueArray[i]);
+		vec.push_back(valueArray[i]);
 	}
 }
 
-VectorStack::~VectorStack(){
-	delete vec;
-}
 
 void VectorStack::push(const ValueType& value){
-	vec->push_back(value);
+	vec.push_back(value);
 }
 
 void VectorStack::pop(){
-	vec->pop_back();
+	vec.pop_back();
 }
 
 const ValueType& VectorStack::top() const {
-	return vec->at(vec->size()-1);
+	return vec.at(vec.size()-1);
 }
 
 bool VectorStack::isEmpty()const{
-	return vec->empty();
+	return vec.empty();
 }
 
 size_t VectorStack::size() const {
-	return vec->size();
+	return vec.size();
 }
 
 
 
 ValueType* VectorStack::getSequence() const {
-    ValueType *arr = new ValueType[vec->size()];
-    for (int i = 0; i< vec->size(); ++i){
-        arr[i] = vec->at(i);
+    ValueType *arr = new ValueType[vec.size()];
+    for (int i = 0; i< vec.size(); ++i){
+        arr[i] = vec.at(i);
     }
     return arr;
 }
