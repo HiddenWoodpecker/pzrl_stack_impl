@@ -34,7 +34,7 @@ Stack::Stack(const Stack& copyStack){
 		    _pimpl = new LinkedListStack(valueArray, arraySize);
 	    }
 
-        delete valueArray;
+        delete[] valueArray;
     }
 }
 
@@ -48,7 +48,7 @@ Stack& Stack::operator=(const Stack& copyStack){
     else{
 	    ValueType * valueArray = copyStack._pimpl->getSequence();
         int arraySize = copyStack.size();
-
+        delete _pimpl;
         if (container == StackContainer::Vector){
 		    _pimpl = new VectorStack(valueArray, arraySize);
 	    }
@@ -56,7 +56,7 @@ Stack& Stack::operator=(const Stack& copyStack){
 		    _pimpl = new LinkedListStack(valueArray, arraySize);
 	    }
 
-        delete valueArray;
+        delete[] valueArray;
         }
 
     }
